@@ -1,16 +1,16 @@
 #include<iostream>
-#include<array> 
+#include<array>
+#include<bits/stdc++.h> 
 using namespace std;
-struct pair{
+struct node{
     int max;
     int min;
 }; 
 
-struct pair max_min(int a[]){
-    struct pair p2;
-    int max= -1;
-    int min= 7;
-    int n=sizeof(a)/sizeof(a[0]);
+struct node maxmin(int a[],int n){
+    struct node p2;
+    int max= INT_MIN;
+    int min= INT_MAX;
     for(int i=0;i<n;i++){
         if(a[i]>max)
             max=a[i];
@@ -23,9 +23,11 @@ struct pair max_min(int a[]){
 }
 
 int main() {
-	struct pair p1;
+	struct node p1;
+    cout<<"hi";
 	int a[]={1,2,3,4,5,6};
-	p1=max_min(a);
+    int n=sizeof(a)/sizeof(a[0]);
+	p1=maxmin(a,n);
 	cout<<"Max: "<<p1.max<<" Min: "<<p1.min;
 	return 0;
 }
