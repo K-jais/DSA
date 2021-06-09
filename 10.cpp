@@ -1,30 +1,39 @@
-int minJumps(int arr[], int n){
-        // Your code here
-        int step=arr[0],maxrange=arr[0],jump=1;
-        
-       if(n==1)
-       return 0;
-       else if(arr[0]==0)
-       return -1;
-       else
-       {
-           for(int i=1;i<n;i++)
-           {
-               if(i==n-1)
-               return jump;
-               maxrange=max(maxrange,i+arr[i]);
-               
-               step--;
-               if(step==0)
+int minJumps(int a[], int n){
+        int min=n,minin=0,check=0+a[0],minjump=1,flag=0;
+        if(a[0]!=0){
+            for(int i=0;i<n;i++){
+            if(i<=check){
+                if((n-a[0]-1)<0){
+                    break;
+                }
+               if(n-a[i]-1-i<min && (a[i]+i)!=0)
                {
-                   jump++;
-                   step=maxrange-i;
-                   if(i>=maxrange) return -1;
-                   }
-               
-               
-           }
-           
+                    min=n-a[i]-1-i;
+                    if(min<=0){
+                        minjump++;
+                        break;
+                    }
+                    minin=i;
+                } 
+            }
+            if(i==check){
+                minjump++;
+                if(flag==minin){
+                    flag=-1;
+                    break;
+                }
+                check=minin+a[minin];
+                if(check>=n-1){
+                    break;
+                }
+                flag=minin;
+            }
         }
-        
+        if(flag==-1){
+            return -1;
+        }
+        return minjump;
+        }else{
+            return -1;
+        }
     }
