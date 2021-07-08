@@ -1,22 +1,16 @@
-vector<vector<int>> sortedMatrix(int n, vector<vector<int>> mat) {
-        int temp[n * n];
-    int k = 0;
- 
-    // copy the elements of matrix one by one
-    // into temp[]
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            temp[k++] = mat[i][j];
- 
-    // sort temp[]
-    sort(temp, temp + k);
-     
-    // copy the elements of temp[] one by one
-    // in mat[][]
-    k = 0;
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            mat[i][j] = temp[k++];
-            return mat;
-    }
-};
+int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
+	    int max=INT_MIN,row=-1;
+	    int place=0;
+	    for(int i=0;i<n;i++){
+	        place=upper_bound(arr[i].begin(),arr[i].end(),0) - arr[i].begin();
+	        place=m-place;
+	        if(max<place){
+	        max=place;
+	        row=i;
+	        }
+	    }
+	    if(max==0)
+	    return -1;
+	    else
+	    return row;
+	}
